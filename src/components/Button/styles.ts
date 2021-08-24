@@ -6,12 +6,14 @@ type ContainerProps = {
 };
 
 export const Container = styled(RectButton)<ContainerProps>`
-  height: 50px;
-  width: 180px;
-  border-radius: 8px;
-
   align-items: center;
   justify-content: center;
+
+  ${({ theme }) => css`
+    height: ${theme.screen.rem(3.5)}px;
+    width: ${theme.screen.rem(13)}px;
+    border-radius: ${theme.screen.rem(0.5)}px;
+  `}
 
   ${({ color, theme }) =>
     color === 'shape'
@@ -24,10 +26,9 @@ export const Container = styled(RectButton)<ContainerProps>`
 `;
 
 export const ButtonText = styled.Text`
-  font-size: 16px;
-
   ${({ theme }) => css`
+    font-size: ${theme.screen.rem(1.2)}px;
     color: ${theme.colors.label};
-    font-family: ${theme.fonts.regurlar};
+    font-family: ${theme.fonts.medium};
   `}
 `;
