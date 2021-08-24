@@ -9,6 +9,8 @@ export default {
     secondary: '#1EC76D',
 
     shape: '#212025',
+
+    bullet: '#3E3E40',
   },
   fonts: {
     regurlar: 'Roboto_400Regular',

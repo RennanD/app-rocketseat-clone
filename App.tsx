@@ -1,6 +1,9 @@
 import 'react-native-gesture-handler';
 import React from 'react';
 
+import { ScreenProvider } from 'responsive-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+
 import {
   useFonts,
   Roboto_400Regular,
@@ -8,9 +11,8 @@ import {
   Roboto_700Bold,
 } from '@expo-google-fonts/roboto';
 
-import { ThemeProvider } from 'styled-components/native';
-
 import { StatusBar, Text } from 'react-native';
+import { ThemeProvider } from './src/styles/ThemProvider';
 
 import { Routes } from './src/routes';
 
@@ -26,14 +28,18 @@ export default function App(): JSX.Element {
   if (!fontsLoaded) return <Text>Carregando</Text>;
 
   return (
-    <ThemeProvider theme={theme}>
-      <StatusBar
-        backgroundColor="transparent"
-        translucent
-        barStyle="light-content"
-      />
+    <SafeAreaProvider>
+      <ScreenProvider baseFontSize={14}>
+        <ThemeProvider>
+          <StatusBar
+            backgroundColor="transparent"
+            translucent
+            barStyle="light-content"
+          />
 
-      <Routes />
-    </ThemeProvider>
+          <Routes />
+        </ThemeProvider>
+      </ScreenProvider>
+    </SafeAreaProvider>
   );
 }

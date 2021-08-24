@@ -1,76 +1,86 @@
-import React from 'react';
-import { Image } from 'react-native';
+import React, { useRef, useState } from 'react';
+import { FlatList, ViewToken } from 'react-native';
 
-import Onboarding from 'react-native-onboarding-swiper';
-
-import { useTheme } from 'styled-components';
-import { Container } from './styles';
+import {
+  Container,
+  PageContainer,
+  HeroImage,
+  Title,
+  Subtitle,
+  Content,
+  BulletsContainer,
+} from './styles';
 
 import AstronautImage from '../../assets/images/astronaut.png';
 import ConnectImage from '../../assets/images/connect.png';
 import LessonsImage from '../../assets/images/lessons.png';
+import { Bullet } from '../../components/Bullet';
+import { Button } from '../../components/Button';
+
+type ChangeImageProps = {
+  viewableItems: ViewToken[];
+  changed: ViewToken[];
+};
+
+const pages = [
+  {
+    id: '1',
+    image: AstronautImage,
+    title: 'Olá,\ntripulante',
+    subtitle: 'Nossas boas-vindas a\nVersão Beta 1.0',
+  },
+  {
+    id: '2',
+    image: ConnectImage,
+    title: 'O mobile,\nestá em evolução',
+    subtitle:
+      'Nessa versão você pode expandir sua rede,\nver suas conexões, controlar seu perfil, seus\ndados e ver notificações',
+  },
+  {
+    id: '3',
+    image: LessonsImage,
+    title: 'Aulas e novos\nrecursos em breve',
+    subtitle:
+      'O acesso às suas aulas e outras melhorias\nvirão com a evolução do mobile. Tudo pra\nvocê ter a melhor experiência',
+  },
+];
 
 export function OnBoarding(): JSX.Element {
-  const theme = useTheme();
+  const [activePageIndex, setActivePageIndex] = useState(0);
+
+  const pageIndexChange = useRef((info: ChangeImageProps) => {
+    setActivePageIndex(info.viewableItems[0].index!);
+  });
 
   return (
     <Container>
-      <Onboarding
-        pages={[
-          {
-            backgroundColor: theme.colors.background,
-            image: <Image source={AstronautImage} />,
-            title: 'Olá,\ntripulante',
-            titleStyles: {
-              fontFamily: theme.fonts.bold,
-              fontSize: 36,
-              color: theme.colors.title,
-            },
-            subtitle: 'Nossas boas-vindas a\nVersão Beta 1.0',
-            subTitleStyles: {
-              fontSize: 16,
-              fontFamily: theme.fonts.regurlar,
-              lineHeight: 24,
-              letterSpacing: 0.5,
-            },
-          },
-          {
-            backgroundColor: theme.colors.background,
-            image: <Image source={ConnectImage} />,
-            title: 'O mobile,\nestá em evolução',
-            titleStyles: {
-              fontFamily: theme.fonts.bold,
-              fontSize: 36,
-              color: theme.colors.title,
-            },
-            subtitle:
-              'Nessa versão você pode expandir sua rede,\nver suas conexões, controlar seu perfil, seus\ndados e ver notificações',
-            subTitleStyles: {
-              fontSize: 16,
-              fontFamily: theme.fonts.regurlar,
-              lineHeight: 24,
-              letterSpacing: 0.5,
-            },
-          },
-          {
-            backgroundColor: theme.colors.background,
-            image: <Image source={LessonsImage} />,
-            title: 'Olá,\ntripulante',
-            titleStyles: {
-              fontFamily: theme.fonts.bold,
-              fontSize: 36,
-              color: theme.colors.title,
-            },
-            subtitle: 'Aulas e novos\nrecursos em breve',
-            subTitleStyles: {
-              fontSize: 16,
-              fontFamily: theme.fonts.regurlar,
-              lineHeight: 24,
-              letterSpacing: 0.5,
-            },
-          },
-        ]}
+      <FlatList
+        data={pages}
+        keyExtractor={page => page.id}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        pagingEnabled
+        onViewableItemsChanged={pageIndexChange.current}
+        renderItem={({ item }) => (
+          <PageContainer>
+            <HeroImage source={item.image} />
+            <Title>{item.title}</Title>
+            <Subtitle>{item.subtitle}</Subtitle>
+          </PageContainer>
+        )}
       />
+
+      <Content>
+        <BulletsContainer>
+          {pages.map((_, index) => (
+            <Bullet key={String(index)} selected={index === activePageIndex} />
+          ))}
+        </BulletsContainer>
+        <Button
+          title={activePageIndex === pages.length - 1 ? 'Começar' : 'Avançar'}
+          color={activePageIndex === pages.length - 1 ? 'purple' : 'shape'}
+        />
+      </Content>
     </Container>
   );
 }

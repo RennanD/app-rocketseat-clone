@@ -28,6 +28,8 @@
     "rules": {
       "prettier/prettier": "error",
       "react-hooks/rules-of-hooks": "error",
+      "react/require-default-props": "off",
+      "@typescript-eslint/no-non-null-assertion": "off",
       "camelcase": "off",
       "@typescript-eslint/no-empty-interface": "off",
       "react-hooks/exhaustive-deps": "warn",
