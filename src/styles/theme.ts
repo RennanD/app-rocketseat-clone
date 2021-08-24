@@ -12,7 +12,7 @@ export default {
     primary: '#8257E5',
     secondary: '#1EC76D',
 
-    shape: '#212025',
+    shape: '#333238',
 
     bullet: '#3E3E40',
   },
