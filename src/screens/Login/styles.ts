@@ -9,9 +9,10 @@ export const Container = styled.View`
 `;
 
 export const Content = styled.View`
-  flex: 1;
+  /* flex: 1; */
 
   padding: 0 ${({ theme }) => theme.screen.rem(1.5)}px;
+  height: 90%;
 `;
 
 export const Header = styled.View`
@@ -20,7 +21,8 @@ export const Header = styled.View`
   justify-content: space-between;
 
   ${({ theme }) => css`
-    padding-top: ${getStatusBarHeight() + theme.screen.rem(1)}px;
+    padding-top: ${getStatusBarHeight() + theme.screen.rem(1.5)}px;
+    margin-bottom: ${theme.screen.rem(3.6)}px;
   `}
 `;
 
@@ -33,8 +35,9 @@ export const MobileVersion = styled.Text`
 `;
 
 export const Form = styled.View`
-  flex: 1;
+  /* flex: 1; */
   justify-content: center;
+  margin-bottom: ${({ theme }) => theme.screen.rem(3)}px;
 `;
 
 export const FormTitle = styled.Text`
