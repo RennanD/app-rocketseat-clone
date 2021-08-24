@@ -33,6 +33,7 @@ const pages = [
     image: AstronautImage,
     title: 'Olá,\ntripulante',
     subtitle: 'Nossas boas-vindas a\nVersão Beta 1.0',
+    titleSize: 2.6,
   },
   {
     id: '2',
@@ -40,6 +41,7 @@ const pages = [
     title: 'O mobile,\nestá em evolução',
     subtitle:
       'Nessa versão você pode expandir sua rede,\nver suas conexões, controlar seu perfil, seus\ndados e ver notificações',
+    titleSize: 2,
   },
   {
     id: '3',
@@ -47,6 +49,7 @@ const pages = [
     title: 'Aulas e novos\nrecursos em breve',
     subtitle:
       'O acesso às suas aulas e outras melhorias\nvirão com a evolução do mobile. Tudo pra\nvocê ter a melhor experiência',
+    titleSize: 2,
   },
 ];
 
@@ -87,7 +90,7 @@ export function OnBoarding(): JSX.Element {
         renderItem={({ item }) => (
           <PageContainer>
             <HeroImage source={item.image} />
-            <Title>{item.title}</Title>
+            <Title fontSize={item.titleSize}>{item.title}</Title>
             <Subtitle>{item.subtitle}</Subtitle>
           </PageContainer>
         )}

@@ -1,9 +1,13 @@
 export default {
   colors: {
     background: '#131315',
+    background_secondary: '#201F24',
+
     title: '#F7F7F7',
     label: '#F2F2F3',
     text: '#B4B3B8',
+    placeholder: '#35343A',
+    input_placeholder: '#64646A',
 
     primary: '#8257E5',
     secondary: '#1EC76D',
