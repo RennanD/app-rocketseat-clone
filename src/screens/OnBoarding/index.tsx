@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { FlatList, ViewToken } from 'react-native';
 
+import { useNavigation } from '@react-navigation/native';
 import {
   Container,
   PageContainer,
@@ -20,6 +21,10 @@ import { Button } from '../../components/Button';
 type ChangeImageProps = {
   viewableItems: ViewToken[];
   changed: ViewToken[];
+};
+
+type NavigationProps = {
+  navigate: (screen: string) => void;
 };
 
 const pages = [
@@ -46,15 +51,33 @@ const pages = [
 ];
 
 export function OnBoarding(): JSX.Element {
+  const navigation = useNavigation<NavigationProps>();
+
   const [activePageIndex, setActivePageIndex] = useState(0);
 
   const pageIndexChange = useRef((info: ChangeImageProps) => {
     setActivePageIndex(info.viewableItems[0].index!);
   });
 
+  const flatListRef = useRef<FlatList>(null);
+
+  function handleNextBoard() {
+    if (activePageIndex !== pages.length - 1) {
+      flatListRef.current?.scrollToIndex({
+        animated: true,
+        index: activePageIndex + 1,
+      });
+
+      return;
+    }
+
+    navigation.navigate('Login');
+  }
+
   return (
     <Container>
       <FlatList
+        ref={flatListRef}
         data={pages}
         keyExtractor={page => page.id}
         horizontal
@@ -79,6 +102,7 @@ export function OnBoarding(): JSX.Element {
         <Button
           title={activePageIndex === pages.length - 1 ? 'Começar' : 'Avançar'}
           color={activePageIndex === pages.length - 1 ? 'purple' : 'shape'}
+          onPress={handleNextBoard}
         />
       </Content>
     </Container>

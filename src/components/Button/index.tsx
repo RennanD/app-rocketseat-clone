@@ -8,9 +8,13 @@ interface ButtonProps extends RectButtonProps {
   color?: 'shape' | 'purple';
 }
 
-export function Button({ title, color = 'shape' }: ButtonProps): JSX.Element {
+export function Button({
+  title,
+  color = 'shape',
+  ...rest
+}: ButtonProps): JSX.Element {
   return (
-    <Container color={color}>
+    <Container color={color} {...rest}>
       <ButtonText>{title}</ButtonText>
     </Container>
   );
