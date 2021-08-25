@@ -11,7 +11,7 @@ import {
   Roboto_700Bold,
 } from '@expo-google-fonts/roboto';
 
-import { StatusBar, Text, View } from 'react-native';
+import { StatusBar, Text } from 'react-native';
 import { ThemeProvider } from './src/styles/ThemProvider';
 
 import { Routes } from './src/routes';

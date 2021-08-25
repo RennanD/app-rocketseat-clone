@@ -1,8 +1,9 @@
 import React from 'react';
+import { KeyboardAvoidingView } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from 'styled-components';
-import { KeyboardAvoidingView } from 'react-native';
 import {
   Container,
   Header,
@@ -23,12 +24,23 @@ import {
   Footer,
 } from './styles';
 
-import LogoImage from '../../assets/icons/logo.svg';
 import { TextInput } from '../../components/TextInput';
 import { PasswordInput } from '../../components/PasswordInput';
 
+import LogoImage from '../../assets/icons/logo.svg';
+
+type NavigationProps = {
+  navigate: (screen: string) => void;
+};
+
 export function Login(): JSX.Element {
   const theme = useTheme();
+
+  const navigation = useNavigation<NavigationProps>();
+
+  function handleNavigateToProfile() {
+    navigation.navigate('Profile');
+  }
 
   return (
     <Container>
@@ -54,7 +66,7 @@ export function Login(): JSX.Element {
             />
             <PasswordInput placeholder="Senha" />
 
-            <LoginButton>
+            <LoginButton onPress={handleNavigateToProfile}>
               <LoginButtonText>ENTRAR</LoginButtonText>
             </LoginButton>
 
@@ -67,14 +79,14 @@ export function Login(): JSX.Element {
 
             <SocialLoginContainer>
               <SocialLoginText>Ou entre com</SocialLoginText>
-              <SocialLoginButton>
+              <SocialLoginButton onPress={handleNavigateToProfile}>
                 <Ionicons
                   name="ios-logo-apple"
                   size={24}
                   color={theme.colors.label}
                 />
               </SocialLoginButton>
-              <SocialLoginButton>
+              <SocialLoginButton onPress={handleNavigateToProfile}>
                 <Ionicons
                   name="ios-logo-github"
                   size={24}
