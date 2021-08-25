@@ -13,6 +13,7 @@ export const CoverImage = styled.Image`
 export const SectionCard = styled.View`
   ${({ theme }) => css`
     background-color: ${theme.colors.background_secondary};
+    margin-bottom: ${theme.screen.rem(1.5)}px;
   `}
 `;
 
@@ -59,7 +60,7 @@ export const UserName = styled.Text`
     color: ${theme.colors.title};
     font-family: ${theme.fonts.medium};
 
-    font-size: ${theme.screen.rem(1.5)}px;
+    font-size: ${theme.screen.rem(1.7)}px;
 
     margin-left: ${theme.screen.rem(1)}px;
     line-height: ${theme.screen.rem(1.7)}px;
@@ -71,7 +72,7 @@ export const Footer = styled.View`
 
   padding: ${({ theme }) => theme.screen.rem(1.5)}px;
 
-  border-top-width: 2px;
+  border-top-width: 1px;
   border-top-color: ${({ theme }) => theme.colors.placeholder};
 
   align-items: center;
