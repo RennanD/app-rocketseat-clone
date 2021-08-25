@@ -17,7 +17,6 @@ import { StatusBar } from 'react-native';
 import { ThemeProvider } from './src/styles/ThemProvider';
 
 import { Routes } from './src/routes';
-import { Background } from './src/components/Background';
 
 export default function App(): JSX.Element {
   const [fontsLoaded] = useFonts({
@@ -37,9 +36,8 @@ export default function App(): JSX.Element {
             translucent
             barStyle="light-content"
           />
-          <Background>
-            <Routes />
-          </Background>
+
+          <Routes />
         </ThemeProvider>
       </ScreenProvider>
     </SafeAreaProvider>

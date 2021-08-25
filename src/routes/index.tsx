@@ -7,7 +7,6 @@ import { useTheme } from 'styled-components';
 import { OnBoarding } from '../screens/OnBoarding';
 import { Login } from '../screens/Login';
 import { Profile } from '../screens/Profile';
-import { Background } from '../components/Background';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -24,17 +23,15 @@ export function Routes(): JSX.Element {
 
   return (
     <NavigationContainer theme={myTheme}>
-      <Background>
-        <Navigator
-          screenOptions={{
-            headerShown: false,
-          }}
-        >
-          <Screen name="OnBoarding" component={OnBoarding} />
-          <Screen name="Login" component={Login} />
-          <Screen name="Profile" component={Profile} />
-        </Navigator>
-      </Background>
+      <Navigator
+        screenOptions={{
+          headerShown: false,
+        }}
+      >
+        <Screen name="OnBoarding" component={OnBoarding} />
+        <Screen name="Login" component={Login} />
+        <Screen name="Profile" component={Profile} />
+      </Navigator>
     </NavigationContainer>
   );
 }
