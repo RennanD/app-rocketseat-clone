@@ -1,28 +1,8 @@
-import { getStatusBarHeight } from 'react-native-iphone-x-helper';
 import styled, { css } from 'styled-components/native';
 
 export const Container = styled.View`
   flex: 1;
   background-color: ${({ theme }) => theme.colors.background};
-`;
-
-export const Header = styled.View`
-  flex-direction: row;
-
-  align-items: center;
-  justify-content: space-between;
-
-  ${({ theme }) => css`
-    padding: 0 ${theme.screen.rem(1.5)}px;
-    padding-top: ${getStatusBarHeight() + theme.screen.rem(1.5)}px;
-    padding-bottom: ${theme.screen.rem(0.6)}px;
-    background-color: ${theme.colors.background_secondary};
-  `}
-`;
-
-export const ActionsContainer = styled.View`
-  flex-direction: row;
-  align-items: center;
 `;
 
 export const CoverImage = styled.Image`
@@ -84,73 +64,6 @@ export const UserName = styled.Text`
     margin-left: ${theme.screen.rem(1)}px;
     line-height: ${theme.screen.rem(1.7)}px;
   `}
-`;
-
-export const UserReferencesContainer = styled.View`
-  margin-bottom: ${({ theme }) => theme.screen.rem(1.5)}px;
-`;
-
-export const NickName = styled.Text`
-  ${({ theme }) => css`
-    color: ${theme.colors.title};
-    font-family: ${theme.fonts.regurlar};
-
-    font-size: ${theme.screen.rem(1)}px;
-    line-height: ${theme.screen.rem(1.7)}px;
-  `}
-
-  margin-bottom: 4px;
-`;
-
-export const WorkInformation = styled.Text`
-  flex-direction: row;
-  align-items: center;
-
-  margin-bottom: 4px;
-`;
-
-export const Office = styled.Text`
-  ${({ theme }) => css`
-    color: ${theme.colors.title};
-    font-family: ${theme.fonts.regurlar};
-
-    font-size: ${theme.screen.rem(1)}px;
-    line-height: ${theme.screen.rem(1.7)}px;
-  `}
-`;
-
-export const CompanyName = styled.Text`
-  ${({ theme }) => css`
-    color: ${theme.colors.title};
-    font-family: ${theme.fonts.regurlar};
-
-    font-size: ${theme.screen.rem(1)}px;
-  `}
-  text-decoration: underline;
-`;
-
-export const PlaceUser = styled.View`
-  flex-direction: row;
-  align-items: center;
-`;
-
-export const PlaceUserText = styled.Text`
-  ${({ theme }) => css`
-    color: ${theme.colors.title};
-    font-family: ${theme.fonts.regurlar};
-
-    font-size: ${theme.screen.rem(1)}px;
-    line-height: ${theme.screen.rem(1.7)}px;
-  `}
-`;
-
-export const TechsContainer = styled.View`
-  width: 100%;
-
-  flex-direction: row;
-  flex-wrap: wrap;
-
-  margin-bottom: ${({ theme }) => theme.screen.rem(1.5)}px;
 `;
 
 export const Footer = styled.View`

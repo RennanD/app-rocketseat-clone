@@ -1,14 +1,7 @@
-import { AntDesign, Feather } from '@expo/vector-icons';
 import React from 'react';
-
-import { useTheme } from 'styled-components';
-
-import { SvgFromUri } from 'react-native-svg';
 
 import {
   Container,
-  Header,
-  ActionsContainer,
   CoverImage,
   SectionCard,
   ProfileContainer,
@@ -16,21 +9,15 @@ import {
   UserAvatarContainer,
   UserAvatar,
   UserName,
-  UserReferencesContainer,
-  NickName,
-  WorkInformation,
-  Office,
-  CompanyName,
-  PlaceUser,
-  PlaceUserText,
-  TechsContainer,
   Footer,
   MemberPeriodText,
   Content,
 } from './styles';
 
-import BurguerMenu from '../../assets/icons/burguer-menu.svg';
 import { IconButton } from '../../components/IconButton';
+import { NavBar } from './components/NavBar';
+import { UserReferences } from './components/UserReferences';
+import { Techs } from './components/Techs';
 
 const techs = [
   {
@@ -56,31 +43,9 @@ const techs = [
 ];
 
 export function Profile(): JSX.Element {
-  const theme = useTheme();
-
   return (
     <Container>
-      <Header>
-        <IconButton icon={{ svg: <BurguerMenu /> }} />
-
-        <ActionsContainer>
-          <IconButton icon="search" style={{ marginRight: 20 }} />
-
-          <IconButton
-            icon={{
-              svg: (
-                <AntDesign
-                  name="adduser"
-                  size={24}
-                  color={theme.colors.text}
-                  style={{ marginRight: 20 }}
-                />
-              ),
-            }}
-          />
-          <IconButton icon="bell" />
-        </ActionsContainer>
-      </Header>
+      <NavBar />
       <CoverImage
         source={{
           uri: 'https://res.cloudinary.com/do6cbpp3c/image/upload/v1629853868/profile-89559894-c39b-4baa-b68d-a8ff09d192b7_llvhzj.jpg',
@@ -101,42 +66,8 @@ export function Profile(): JSX.Element {
             <IconButton icon="edit" />
           </ProfileContainer>
 
-          <UserReferencesContainer>
-            <NickName>@rennan-oliveira</NickName>
-            <WorkInformation>
-              <Office>Mobile Engineer | </Office>
-
-              <CompanyName>Rocketseat</CompanyName>
-            </WorkInformation>
-
-            <PlaceUser>
-              <Feather
-                name="map-pin"
-                size={16}
-                color={theme.colors.text}
-                style={{ marginRight: 6 }}
-              />
-              <PlaceUserText>Teresina, PI, Brasil</PlaceUserText>
-            </PlaceUser>
-          </UserReferencesContainer>
-
-          <TechsContainer>
-            {techs.map(tech => (
-              <IconButton
-                key={tech.id}
-                icon={{
-                  svg: (
-                    <SvgFromUri
-                      uri={tech.url}
-                      height={48}
-                      width={48}
-                      style={{ marginRight: 10 }}
-                    />
-                  ),
-                }}
-              />
-            ))}
-          </TechsContainer>
+          <UserReferences />
+          <Techs techs={techs} />
         </Content>
 
         <Footer>
