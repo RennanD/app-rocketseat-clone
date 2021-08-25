@@ -1,9 +1,4 @@
-import {
-  AntDesign,
-  Feather,
-  MaterialCommunityIcons,
-  SimpleLineIcons,
-} from '@expo/vector-icons';
+import { AntDesign, Feather } from '@expo/vector-icons';
 import React from 'react';
 
 import { useTheme } from 'styled-components';
@@ -35,6 +30,7 @@ import {
 } from './styles';
 
 import BurguerMenu from '../../assets/icons/burguer-menu.svg';
+import { IconButton } from '../../components/IconButton';
 
 const techs = [
   {
@@ -65,22 +61,24 @@ export function Profile(): JSX.Element {
   return (
     <Container>
       <Header>
-        <BurguerMenu />
+        <IconButton icon={{ svg: <BurguerMenu /> }} />
 
         <ActionsContainer>
-          <Feather
-            name="search"
-            size={24}
-            color={theme.colors.text}
-            style={{ marginRight: 20 }}
+          <IconButton icon="search" style={{ marginRight: 20 }} />
+
+          <IconButton
+            icon={{
+              svg: (
+                <AntDesign
+                  name="adduser"
+                  size={24}
+                  color={theme.colors.text}
+                  style={{ marginRight: 20 }}
+                />
+              ),
+            }}
           />
-          <AntDesign
-            name="adduser"
-            size={24}
-            color={theme.colors.text}
-            style={{ marginRight: 20 }}
-          />
-          <Feather name="bell" size={24} color={theme.colors.text} />
+          <IconButton icon="bell" />
         </ActionsContainer>
       </Header>
       <CoverImage
@@ -100,11 +98,7 @@ export function Profile(): JSX.Element {
               <UserName>Rennan{'\n'}Douglas Oliveira</UserName>
             </UserInfoContainer>
 
-            <MaterialCommunityIcons
-              name="file-document-edit-outline"
-              size={24}
-              color={theme.colors.text}
-            />
+            <IconButton icon="edit" />
           </ProfileContainer>
 
           <UserReferencesContainer>
@@ -116,8 +110,8 @@ export function Profile(): JSX.Element {
             </WorkInformation>
 
             <PlaceUser>
-              <SimpleLineIcons
-                name="location-pin"
+              <Feather
+                name="map-pin"
                 size={16}
                 color={theme.colors.text}
                 style={{ marginRight: 6 }}
@@ -128,12 +122,18 @@ export function Profile(): JSX.Element {
 
           <TechsContainer>
             {techs.map(tech => (
-              <SvgFromUri
+              <IconButton
                 key={tech.id}
-                uri={tech.url}
-                height={48}
-                width={48}
-                style={{ marginRight: 10 }}
+                icon={{
+                  svg: (
+                    <SvgFromUri
+                      uri={tech.url}
+                      height={48}
+                      width={48}
+                      style={{ marginRight: 10 }}
+                    />
+                  ),
+                }}
               />
             ))}
           </TechsContainer>
