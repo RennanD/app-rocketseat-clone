@@ -4,6 +4,8 @@ import React from 'react';
 import { ScreenProvider } from 'responsive-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
+import AppLoading from 'expo-app-loading';
+
 import {
   useFonts,
   Roboto_400Regular,
@@ -11,10 +13,11 @@ import {
   Roboto_700Bold,
 } from '@expo-google-fonts/roboto';
 
-import { StatusBar, Text } from 'react-native';
+import { StatusBar } from 'react-native';
 import { ThemeProvider } from './src/styles/ThemProvider';
 
 import { Routes } from './src/routes';
+import { Background } from './src/components/Background';
 
 export default function App(): JSX.Element {
   const [fontsLoaded] = useFonts({
@@ -23,7 +26,7 @@ export default function App(): JSX.Element {
     Roboto_700Bold,
   });
 
-  if (!fontsLoaded) return <Text>Carregando</Text>;
+  if (!fontsLoaded) return <AppLoading />;
 
   return (
     <SafeAreaProvider>
@@ -34,7 +37,9 @@ export default function App(): JSX.Element {
             translucent
             barStyle="light-content"
           />
-          <Routes />
+          <Background>
+            <Routes />
+          </Background>
         </ThemeProvider>
       </ScreenProvider>
     </SafeAreaProvider>
