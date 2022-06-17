@@ -5,9 +5,9 @@ import { AntDesign } from '@expo/vector-icons';
 import { useTheme } from 'styled-components';
 import { Container, ActionsContainer } from './styles';
 
-import { IconButton } from '../../../../components/IconButton';
+import { IconButton } from '../IconButton';
 
-import BurguerMenu from '../../../../assets/icons/burguer-menu.svg';
+import BurguerMenu from '../../assets/icons/logo.svg';
 
 export function NavBar(): JSX.Element {
   const theme = useTheme();

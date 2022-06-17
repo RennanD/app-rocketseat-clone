@@ -6,7 +6,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import { useTheme } from 'styled-components';
 import { OnBoarding } from '../screens/OnBoarding';
 import { Login } from '../screens/Login';
-import { Profile } from '../screens/Profile';
+import { AppRoutes } from './app.routes';
 
 const { Navigator, Screen } = createStackNavigator();
 
@@ -30,7 +30,7 @@ export function Routes(): JSX.Element {
       >
         <Screen name="OnBoarding" component={OnBoarding} />
         <Screen name="Login" component={Login} />
-        <Screen name="Profile" component={Profile} />
+        <Screen name="AppRoutes" component={AppRoutes} />
       </Navigator>
     </NavigationContainer>
   );

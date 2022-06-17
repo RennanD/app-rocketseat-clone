@@ -39,7 +39,7 @@ export function Login(): JSX.Element {
   const navigation = useNavigation<NavigationProps>();
 
   function handleNavigateToProfile() {
-    navigation.navigate('Profile');
+    navigation.navigate('AppRoutes');
   }
 
   return (

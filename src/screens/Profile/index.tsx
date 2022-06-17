@@ -16,7 +16,7 @@ import {
 } from './styles';
 
 import { IconButton } from '../../components/IconButton';
-import { NavBar } from './components/NavBar';
+import { NavBar } from '../../components/NavBar';
 import { UserReferences } from './components/UserReferences';
 import { Techs } from './components/Techs';
 import { AboutMe } from './components/AboutMe';

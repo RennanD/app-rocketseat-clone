@@ -1,10 +1,10 @@
 import 'react-native-gesture-handler';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { ScreenProvider } from 'responsive-native';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 
-import AppLoading from 'expo-app-loading';
+import SplashScreen from 'expo-splash-screen';
 
 import {
   useFonts,
@@ -13,19 +13,41 @@ import {
   Roboto_700Bold,
 } from '@expo-google-fonts/roboto';
 
-import { StatusBar } from 'react-native';
+import { StatusBar, View } from 'react-native';
 import { ThemeProvider } from './src/styles/ThemProvider';
 
 import { Routes } from './src/routes';
 
 export default function App(): JSX.Element {
-  const [fontsLoaded] = useFonts({
+  const [isReady, setIsReady] = useState(false);
+  const [isLoaded] = useFonts({
     Roboto_400Regular,
     Roboto_500Medium,
     Roboto_700Bold,
   });
 
-  if (!fontsLoaded) return <AppLoading />;
+  useEffect(() => {
+    const showSplashScreen = async () => {
+      await SplashScreen.preventAutoHideAsync();
+    };
+    showSplashScreen();
+  }, []);
+
+  useEffect(() => {
+    if (isLoaded) {
+      setIsReady(true);
+    }
+  }, [isLoaded]);
+
+  useEffect(() => {
+    const hideSplashScreen = async () => {
+      await SplashScreen.hideAsync();
+    };
+
+    if (isLoaded && isReady) hideSplashScreen();
+  }, [isReady, isLoaded]);
+
+  if (!isReady) return <View />;
 
   return (
     <SafeAreaProvider>
