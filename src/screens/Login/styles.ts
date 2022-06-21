@@ -70,7 +70,7 @@ export const LoginButton = styled(RectButton)`
 
   ${({ theme }) => css`
     background-color: ${theme.colors.primary};
-    height: ${theme.screen.rem(4)}px;
+    height: ${theme.screen.rem(3.5)}px;
 
     border-radius: ${theme.screen.rem(0.4)}px;
     padding: 0 ${theme.screen.rem(1.5)}px;

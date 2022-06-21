@@ -1,6 +1,7 @@
 import { Feather } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTheme } from 'styled-components';
+import { getBottomSpace } from 'react-native-iphone-x-helper';
 import { Profile } from '../screens/Profile';
 import { Forum } from '../screens/Forum';
 
@@ -18,7 +19,7 @@ export function AppRoutes(): JSX.Element {
         tabBarInactiveTintColor: theme.colors.bullet,
         tabBarStyle: {
           backgroundColor: theme.colors.background_secondary,
-          height: 60,
+          height: 60 + getBottomSpace(),
           borderTopColor: theme.colors.shape,
         },
       }}

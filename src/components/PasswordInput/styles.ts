@@ -9,7 +9,7 @@ export const Container = styled.View`
 
   ${({ theme }) => css`
     background-color: ${theme.colors.background};
-    height: ${theme.screen.rem(4)}px;
+    height: ${theme.screen.rem(3.5)}px;
     border-radius: ${theme.screen.rem(0.4)}px;
     padding: 0 ${theme.screen.rem(1.5)}px;
     margin-bottom: ${theme.screen.rem(0.6)}px;
